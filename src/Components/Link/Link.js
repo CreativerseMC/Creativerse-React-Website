@@ -91,7 +91,7 @@ const LinkComponent = () => {
 
     return (
         <Wrapper>
-            <p className="username">{uuid}</p>
+            <p className="username">Link Your MC Account</p>
             <p className="info">Please sign the message in the Metamask popup.</p>
             
             <br />
