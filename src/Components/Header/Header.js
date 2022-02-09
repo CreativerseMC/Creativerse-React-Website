@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { animateScroll as scroll } from "react-scroll";
-import { scrollToBottom } from "react-scroll/modules/mixins/animate-scroll";
 
 const Wrapper = styled.div`
   display: flex;
@@ -46,8 +45,9 @@ const Header = () => {
         className="logo"
         onClick={scrollTotop}
       />
-      <a onClick={scrollToBottom} href="#" className="a">
-      <p className="m-0 connect">Play Now!</p>
+      <a onClick={scrollToBottom} href="#" className="a">{// eslint-disable-line
+      }
+      <p className="m-0 connect">Play Now!</p> 
       </a>
     </Wrapper>
   );

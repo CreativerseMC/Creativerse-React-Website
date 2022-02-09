@@ -14,7 +14,8 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route exact path="/" exact element={<Home />}></Route>
+          <Route exact path="/" exact element={<Home />}></Route> {// eslint-disable-line
+}
           <Route path='/save/:tokenId/:cid' element={<Save />}></Route>
           <Route path='/link/:uuid' element={<Link />}></Route>
         </Routes>

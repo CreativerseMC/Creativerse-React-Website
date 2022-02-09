@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom"
 import Web3 from "web3";
@@ -71,10 +71,10 @@ const LinkComponent = () => {
                         (msg) => {
                             var element = document.getElementsByClassName("signedPrefix")[0];
                             element.innerHTML =  "Paste this command into Minecraft:"
-                            var element = document.getElementsByClassName("signed")[0];
+                            element = document.getElementsByClassName("signed")[0];
                             element.innerHTML = "<b>/link " + msg + "</b>";
                             handleCopyText(element);
-                            var element = document.getElementsByClassName("signedButton")[0];
+                            element = document.getElementsByClassName("signedButton")[0];
                             element.style.display = "flex";
                             
                         }
@@ -87,7 +87,7 @@ const LinkComponent = () => {
 
     useEffect(() => {
         run(uuid);
-    }, []);
+    }, []); // eslint-disable-line
 
     return (
         <Wrapper>

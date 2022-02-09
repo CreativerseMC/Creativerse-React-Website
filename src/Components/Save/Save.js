@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import Web3 from "web3";
-import { FaRunning } from "react-icons/fa";
 
 const Wrapper = styled.div`
   display: flex;
@@ -482,7 +481,7 @@ const SaveComponent = () => {
 
     useEffect(() => {
         run(tokenId, cid);
-    }, []);
+    }, []); // eslint-disable-line
 
     return (
         <Wrapper>
