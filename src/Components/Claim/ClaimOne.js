@@ -759,7 +759,7 @@ const ClaimOneComponent = () => {
         }
       ];
 
-      var contract = new web3.eth.Contract(abi, '0xF19886504931F4B04DCD5B63a15D6eBe1b7dE37A');
+      var contract = new web3.eth.Contract(abi, '0xe608791A1B4ed2BA44d482b68feFe102a720a4BB');
 
       contract.methods.claim(tokenId).send({from:accounts[0]})
     }
@@ -1440,7 +1440,7 @@ const ClaimOneComponent = () => {
           }
         ];
   
-        var contract = new web3.eth.Contract(abi, '0xF19886504931F4B04DCD5B63a15D6eBe1b7dE37A');
+        var contract = new web3.eth.Contract(abi, '0xe608791A1B4ed2BA44d482b68feFe102a720a4BB');
 
         const getClaimableTotal = async () => {
           contract.methods.claimable(tokenId).call()

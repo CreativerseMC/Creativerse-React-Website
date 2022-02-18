@@ -530,7 +530,7 @@ const WalletComponent = () => {
         }
     ];
 
-      var contract = new web3.eth.Contract(abi, '0x7e0Bc040A8d9d2D9BB1f940aab85de00923657e0');
+      var contract = new web3.eth.Contract(abi, '0xe608791A1B4ed2BA44d482b68feFe102a720a4BB');
 
         contract.methods.balanceOf(accounts[0]).call()
         .then((balance) => {

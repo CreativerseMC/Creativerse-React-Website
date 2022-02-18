@@ -98,8 +98,8 @@ const Wrapper = styled.div`
 
 const LearnMore = () => {
   const learnMoreArray = [
-    { name: "Plot #3", image: "./images/1.png" },
-    { name: "Plot #7", image: "./images/2.png" },
+    { name: "Plot #1624", image: "./images/1.png" },
+    { name: "Plot #0", image: "./images/2.png" },
     { name: "Plot #12", image: "./images/3.png" },
     { name: "Plot #11", image: "./images/4.png" },
   ];
