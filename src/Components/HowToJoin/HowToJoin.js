@@ -65,6 +65,11 @@ const Wrapper = styled.div`
   .slick-dots li.slick-active button::before {
     color: #fff;
   }
+  #legal {
+    color: #fff;
+    text-align: center;
+    padding-top: 30px;
+  }
 
   @media only screen and (max-width: 767px) {
     .my-card {
@@ -83,15 +88,24 @@ const Wrapper = styled.div`
     }
   }
   @media only screen and (max-width: 675px) {
+    #legal {
+      padding-top: 50px;
+    }
   }
   @media only screen and (max-width: 520px) {
     .my-slider {
       height: 330px;
     }
+    #legal {
+      padding-top: 50px;
+    }
   }
   @media only screen and (max-width: 480px) {
     .my-slider {
       height: 300px;
+    }
+    #legal {
+      padding-top: 50px;
     }
   }
 `;
@@ -103,10 +117,10 @@ const HowtoJoin = () => {
       details:
         "We run a public server that you can join to explore or build on.",
 
-      soft: "Minecraft Java Edition 1.17.1",
-      serverIp: "Server IP: 137.74.246.121:25589",
+      soft: "Minecraft Java Edition 1.18.1",
+      serverIp: "Server IP: CreativerseMC.com",
       buttonText: "copy ip",
-      copyLink: "137.74.246.121:25589",
+      copyLink: "CreativerseMC.com",
     },
     {
       title: "Online Map",
@@ -124,6 +138,14 @@ const HowtoJoin = () => {
       buttonLink: "https://github.com/CreativerseMC",
       copyLink: ""
     },
+    {
+      title: "Learn More",
+      details:
+        "interested in learning more about how this works? Check out the documentation for more information!",
+      buttonText: "Read The Docs",
+      buttonLink: "https://docs.CreativerseMC.com",
+      copyLink: ""
+    }
   ];
   const settingss = {
     dots: true,
@@ -169,7 +191,7 @@ const HowtoJoin = () => {
         <Row className="d-none d-md-flex">
           {" "}
           {howToJoinArray.map((el, i) => (
-            <Col md={4} className="px-xl-4 px-xxl-2" key={i}>
+            <Col md={3} className="px-xl-4 px-xxl-2" key={i}>
               <div className="my-card d-flex justify-content-between align-items-center flex-column ">
                 <div>
                   <h3 className="title">{el.title}</h3>
@@ -209,6 +231,7 @@ const HowtoJoin = () => {
             ))}
           </Slider>
         </div>
+        <p id="legal">Creativerse is not affiliated with Mojang or Microsoft.</p>
       </Wrapper>
     </Col>
   );

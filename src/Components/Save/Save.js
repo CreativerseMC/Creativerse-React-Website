@@ -46,11 +46,55 @@ function unpair(p) {
 const SaveComponent = () => {
     const { tokenId, cid } = useParams();
     const {x, y} = unpair(tokenId);
+
+    async function changeNetwork() {
+        // Check if MetaMask is installed
+        // MetaMask injects the global API into window.ethereum
+        if (window.ethereum) {
+          try {
+            // check if the chain to connect to is installed
+            await window.ethereum.request({
+              method: 'wallet_switchEthereumChain',
+              params: [{ chainId: '0x89' }], // chainId must be in hexadecimal numbers
+            });
+          } catch (error) {
+            // This error code indicates that the chain has not been added to MetaMask
+            // if it is not, then install it into the user MetaMask
+            if (error.code === 4902) {
+              try {
+                await window.ethereum.request({
+                  method: 'wallet_addEthereumChain',
+                  params: [
+                    {
+                      chainId: '0x89',
+                      rpcUrls: ['https://polygon-rpc.com/'],
+                      blockExplorerUrls: ['https://polygonscan.com'],
+                      chainName: 'Polygon Mainnet',
+                      nativeCurrency: {
+                        name: 'MATIC',
+                        symbol: 'MATIC',
+                        decimals: 18
+                      }
+                    },
+                  ],
+                });
+              } catch (addError) {
+                console.error(addError);
+              }
+            }
+            console.error(error);
+          }
+        } else {
+          // if no window.ethereum then MetaMask is not installed
+          alert('MetaMask is not installed. Please consider installing it: https://metamask.io/download.html');
+        } 
+      }
     
     async function run(tokenId, cid) {
+        await changeNetwork();
         if (window.ethereum) {
             const web3 = new Web3(window.ethereum);
-            await window.ethereum.enable();
+            const accounts = await window.ethereum.request({method: "eth_requestAccounts"});
 
             if (!(tokenId == null || cid == null)) {
                 const abi = [
@@ -472,9 +516,7 @@ const SaveComponent = () => {
                 ];
 
                 var contract = new web3.eth.Contract(abi, '0x7e0Bc040A8d9d2D9BB1f940aab85de00923657e0');
-                web3.eth.getAccounts().then((addresses) => {
-                    contract.methods.editPlot(tokenId, cid).send({from: addresses[0]});
-                })
+                contract.methods.editPlot(tokenId, cid).send({from: accounts[0]});
             }
         }
     }
