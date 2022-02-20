@@ -10,6 +10,7 @@ import Save from "./pages/Save";
 import Link from "./pages/Link";
 import Claim from "./pages/Claim";
 import Stake from "./pages/Stake";
+import Discord from "./pages/Discord";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path='/link/:uuid' element={<Link />}></Route>
           <Route path='/claim' element={<Claim />}></Route>
           <Route path='/stake/:tokenId' element={<Stake />}></Route>
+          <Route path='/discord/:id' element={<Discord />}></Route>
         </Routes>
       </Router>
       <Footer />
