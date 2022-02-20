@@ -71,7 +71,7 @@ const DiscordComponent = () => {
                       var element = document.getElementsByClassName("signedPrefix")[0];
                       element.innerHTML =  "Paste this command into Discord:"
                       element = document.getElementsByClassName("signed")[0];
-                      element.innerHTML = "<b>/link " + msg + "</b>";
+                      element.innerHTML = "<b>!link " + msg + "</b>";
                       handleCopyText(element);
                       element = document.getElementsByClassName("signedButton")[0];
                       element.style.display = "flex";
