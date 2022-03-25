@@ -1481,7 +1481,6 @@ const StakeComponent = () => {
     ];
 
       var contract = new web3.eth.Contract(abi, '0xe608791A1B4ed2BA44d482b68feFe102a720a4BB');
-
       contract.methods.unlock(tokenId).send({from: accounts[0]})
     }
   }
@@ -2176,14 +2175,16 @@ const StakeComponent = () => {
           if (((tokenLockInfo[1] < block.timestamp) && (!isLocked)) || tokenLockInfo[1] == null) {
             button.disabled = false;
             button.style.cursor = "pointer";
-            button.onClick = lock;
+            button.removeEventListener("click", unlock);
+            button.addEventListener("click", lock);
             button.style.background = "#009a9a";
             button.innerHTML = "Stake Plot";
             warning.style.display = "flex";
           } else if ((tokenLockInfo[1] < block.timestamp) && isLocked) {
             button.disabled = false;
             button.style.cursor = "pointer";
-            button.onClick = unlock; // define unlock
+            button.removeEventListener("click", lock);
+            button.addEventListener("click", unlock); // define unlock
             button.style.background = "#009a9a";
             button.innerHTML = "Unlock Plot";
             warning.style.display = "flex";
@@ -2192,7 +2193,8 @@ const StakeComponent = () => {
             button.disabled = true;
             button.style.cursor = "not-allowed";
             button.style.background = "darkred";
-            button.onClick = "";
+            button.removeEventListener("click", unlock);
+            button.removeEventListener("click", lock);
             button.innerHTML = "Unlock Plot";
             warning.style.display = "none";
             dateP.innerHTML = "Plot can't be unlocked until <b>" + endDate.toUTCString() + "</b>";
@@ -2226,7 +2228,7 @@ const StakeComponent = () => {
           <p className="subtitle">Stake for</p>
           <input type="number" min="1" max="48" value={time} onChange={handleBothTokenRewardAndTime}></input><p className="subtitle"> x 30 = {time*30} days.</p>
           <p className="subtitle">This will give you a total of <b>{tokenReward} CREATE</b> over <b>{time*30} days.</b></p>
-          <button className="button" onClick={lock}>Stake Plot</button>
+          <button className="button">Stake Plot</button>
           <p className="warning"><b>Warning: This will lock your plot in your wallet, making it untradable for {time*30} days.</b></p>
           <p className="warning2"></p>
           <p className="date"></p>
